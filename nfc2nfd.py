@@ -16,9 +16,11 @@ target_dir = "./"
 if len(sys.argv) > 1:
 	target_dir = sys.argv[1]
 
+
 print("target_dir =", target_dir)
 if not os.path.isdir(target_dir):
 	print("ERROR:", target_dir, "is not dir!")
+
 
 for file in find_all_files(target_dir):
 	if os.path.isfile(file):
