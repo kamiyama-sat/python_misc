@@ -5,7 +5,7 @@ import ntpath
 import unicodedata
 
 
-def fild_all_files(directory):
+def find_all_files(directory):
 	for root, dirs, files in os.walk(directory):
 		yield root
 		for file in files:
@@ -14,13 +14,13 @@ def fild_all_files(directory):
 
 target_dir = "./"
 if len(sys.argv) > 1:
-    target_dir = sys.argv[1]
+	target_dir = sys.argv[1]
 
 print("target_dir =", target_dir)
 if not os.path.isdir(target_dir):
 	print("ERROR:", target_dir, "is not dir!")
 
-for file in fild_all_files(target_dir):
+for file in find_all_files(target_dir):
 	if os.path.isfile(file):
 		dir, name = ntpath.split(file)
 		normalized_name = unicodedata.normalize('NFC', name)
